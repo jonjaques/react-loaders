@@ -1,0 +1,23 @@
+{
+  "name": "react-loaders",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/loader.react.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^4.7.16",
+    "babel-loader": "^4.2.0",
+    "coffee-script": "^1.9.1",
+    "gulp": "^3.8.11",
+    "gulp-util": "^3.0.4",
+    "webpack": "^1.7.3"
+  },
+  "dependencies": {
+    "react": "^0.13.1",
+    "lodash": "^3.5.0"
+  }
+}
