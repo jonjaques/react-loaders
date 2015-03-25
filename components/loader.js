@@ -1,5 +1,4 @@
 var React = require('react');
-var assign = require('lodash/object/assign');
 
 export var Types = {
   "ball-pulse"                  : 3,
@@ -37,19 +36,7 @@ function range(x) {
   return arr;
 }
 
-function Mixin(...mixins) {
-  var Class = function(...args) {
-    mixins.forEach((mixin) =>
-      mixin.constructor && mixin.constructor.call(this, ...args)
-    );
-  };
-
-  assign(Class.prototype, ...mixins);
-
-  return Class;
-};
-
-export class Loader extends Mixin(React.Component, React.PureRenderMixin) {
+export class Loader extends React.Component {
 
   constructor() {
     this.propTypes = {

@@ -4,7 +4,7 @@ merge = require 'lodash/object/merge'
 baseConfig = 
   output:
     path: './dist'
-    filename: '[name].react.js'
+    filename: 'react-[name].js'
     libraryTarget: 'commonjs2'
   module:
     loaders: [{
@@ -15,22 +15,37 @@ baseConfig =
 
 bundle = (o)-> merge {}, baseConfig, o
 
-module.exports = [
-
+loaderBundle = 
   bundle({
-    name: 'loader'
+    name: 'loaders'
     entry:
-     'loader': './components/loader.js'
+     'loaders': './components/loader.js'
     externals:
       react: 'react'
   })
-  
+
+demoBundle =
   bundle({
-    name: 'loader.demo'
+    name: 'loaders-demo'
+    entry:
+      'loaders-demo': './components/demo.js'
     output: 
       libraryTarget: 'umd'
       library: 'LoaderDemo'
-    entry:
-      'loader.demo': './components/demo.js'
+    externals:
+      react: 'React'
   })
-]
+
+devBundle =
+  merge({}, demoBundle, {
+    name: 'loaders-demo-dev'
+    entry:
+      'loaders-demo-dev': './components/demo.js'
+    # output: 
+    #   libraryTarget: 
+    #     'commonjs2'
+  })
+
+delete devBundle.externals
+
+module.exports = [ devBundle, loaderBundle, demoBundle ]

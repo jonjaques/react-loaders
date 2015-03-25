@@ -51,7 +51,7 @@ export class LoaderDemo extends React.Component {
             <h2>{"Delightful and performance-focused pure css loading animations."}</h2>
           </div>
           <div className="right">
-            <a className="btn right" href="https://github.com/ConnorAtherton/loaders.css">
+            <a className="btn right" href="https://github.com/jonjaques/react-loaders">
             View on Github
             </a>
           </div>
@@ -79,7 +79,6 @@ export class LoaderDemo extends React.Component {
               />
               </label>
             </p>
-
           </div>
           <div className="right" style={loaderStyle}>
             <div className="loaders">
