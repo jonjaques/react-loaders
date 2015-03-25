@@ -1,13 +1,13 @@
 {
   "name": "react-loaders",
   "version": "1.0.0",
-  "description": "",
-  "main": "./dist/loader.react.js",
+  "description": "Lightweight wrapper around Loaders.css",
+  "main": "./dist/react-loaders.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Jon Jaques <jaquers@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^4.7.16",
     "babel-loader": "^4.2.0",
@@ -17,7 +17,6 @@
     "webpack": "^1.7.3"
   },
   "dependencies": {
-    "react": "^0.13.1",
-    "lodash": "^3.5.0"
+    "react": "^0.13.1"
   }
 }

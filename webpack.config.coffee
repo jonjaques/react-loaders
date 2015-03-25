@@ -24,6 +24,11 @@ loaderBundle =
       react: 'react'
   })
 
+loaderMinBundle = merge({}, loaderBundle)
+loaderMinBundle.name = loaderBundle.name += '.min'
+loaderMinBundle.entry = 'loaders.min': loaderBundle.entry.loaders
+loaderMinBundle.plugins = [ new webpack.optimize.UglifyJsPlugin() ]
+
 demoBundle =
   bundle({
     name: 'loaders-demo'
@@ -32,20 +37,7 @@ demoBundle =
     output: 
       libraryTarget: 'umd'
       library: 'LoaderDemo'
-    externals:
-      react: 'React'
+    plugins: [ new webpack.optimize.UglifyJsPlugin() ]
   })
 
-devBundle =
-  merge({}, demoBundle, {
-    name: 'loaders-demo-dev'
-    entry:
-      'loaders-demo-dev': './components/demo.js'
-    # output: 
-    #   libraryTarget: 
-    #     'commonjs2'
-  })
-
-delete devBundle.externals
-
-module.exports = [ devBundle, loaderBundle, demoBundle ]
+module.exports = [ loaderBundle, loaderMinBundle, demoBundle ]

@@ -11,7 +11,7 @@ gulp.task 'build', ['demo']
 gulp.task 'dev', ['watch']
 
 gulp.task 'demo', ['app'], ->
-  demoPath = path.resolve './dist/react-loaders-demo-dev'
+  demoPath = path.resolve './dist/react-loaders-demo'
   delete require.cache[demoPath]
   demo = require demoPath
   demoHtml = demo.render()
