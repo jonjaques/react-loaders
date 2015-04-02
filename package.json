@@ -6,6 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository" : { 
+    "type": "git", 
+    "url": "http://github.com/jonjaques/react-loaders.git"
+  },
   "author": "Jon Jaques <jaquers@gmail.com>",
   "license": "MIT",
   "devDependencies": {
