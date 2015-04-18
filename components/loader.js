@@ -36,31 +36,33 @@ function range(x) {
   return arr;
 }
 
-export class Loader extends React.Component {
+export var Loader = React.createClass({
 
-  constructor() {
-    this.propTypes = {
-      type: React.PropTypes.string,
-      active: React.PropTypes.bool
-    }
+  propTypes: {
+    type: React.PropTypes.string,
+    active: React.PropTypes.bool
+  },
 
-    this.defaultProps = {
+  getDefaultProps() {
+    return {
       type: 'ball-pulse',
       active: true
+    };
+  },
+
+  statics: {
+    removeType(key) {
+      delete Types[key];
+    },
+
+    addType(key, nDivs) {
+      Types[key] = nDivs;
     }
-  }
-
-  static removeType(key) {
-    delete Types[key];
-  }
-
-  static addType(key, nDivs) {
-    Types[key] = nDivs;
-  }
+  },
 
   renderDiv(n) {
     return <div key={n} />
-  }
+  },
 
   render() {
     var hidden = { display: !this.props.active ? 'none' : 'block' }
@@ -71,4 +73,5 @@ export class Loader extends React.Component {
       </div>
     </div>
   }
-}
+
+});

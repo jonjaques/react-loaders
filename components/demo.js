@@ -3,39 +3,39 @@ var loader = require('./loader');
 var Loader = loader.Loader;
 var loaderTypes = loader.Types;
 
-export class LoaderDemo extends React.Component {
+export var LoaderDemo = React.createClass({
 
-  constructor() {
-    this.state = {
+  getInitialState() {
+    return {
       selectedType: 'ball-beat',
       seeAll: false,
       active: true
     };
-  }
+  },
 
   componentDidMount() {
     React.findDOMNode(this).className = "loaded";
-  }
+  },
 
   selectType(e) {
     this.setState({ selectedType: e.target.value });
-  }
+  },
 
   toggleSeeAll(e) {
     this.setState({ seeAll: !this.state.seeAll })
-  }
+  },
 
   toggleActive(e) {
     this.setState({ active: !this.state.active })
-  }
+  },
 
   renderTypeOptions(type) {
     return <option key={type} value={type}>{type}</option>
-  }
+  },
 
   renderLoader(type) {
     return <Loader key={type} type={type} active={this.state.active} />
-  }
+  },
 
   render() {
     var hidden = { display: this.state.seeAll ? 'none' : '' };
@@ -61,13 +61,13 @@ export class LoaderDemo extends React.Component {
             <p>
               <label>See All
               <input type="checkbox"
-                onChange={this.toggleSeeAll.bind(this)} />
+                onChange={this.toggleSeeAll} />
               </label>
             </p>
             <p style={hidden}>
               <select 
                 value={this.state.selectedType} 
-                onChange={this.selectType.bind(this)}>
+                onChange={this.selectType}>
                 {Object.keys(loaderTypes).map(this.renderTypeOptions)}
               </select>
             </p>
@@ -75,7 +75,7 @@ export class LoaderDemo extends React.Component {
               <label>Active
               <input type="checkbox"
                 defaultChecked="true"
-                onChange={this.toggleActive.bind(this)} 
+                onChange={this.toggleActive} 
               />
               </label>
             </p>
@@ -83,7 +83,7 @@ export class LoaderDemo extends React.Component {
           <div className="right" style={loaderStyle}>
             <div className="loaders">
               { this.state.seeAll 
-                ? Object.keys(loaderTypes).map(this.renderLoader.bind(this))
+                ? Object.keys(loaderTypes).map(this.renderLoader)
                 : this.renderLoader(this.state.selectedType) }
             </div>
           </div>
@@ -92,7 +92,7 @@ export class LoaderDemo extends React.Component {
     </main>
   }
 
-}
+});
 
 export function run() {
   React.render(<LoaderDemo />, document.body);
