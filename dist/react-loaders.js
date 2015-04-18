@@ -47,12 +47,6 @@ module.exports =
 
 	"use strict";
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
-
-	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
-
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
@@ -98,59 +92,51 @@ module.exports =
 	  return arr;
 	}
 
-	var Loader = exports.Loader = (function (_React$Component) {
-	  function Loader() {
-	    _classCallCheck(this, Loader);
+	var Loader = React.createClass({
+	  displayName: "Loader",
 
-	    this.propTypes = {
-	      type: React.PropTypes.string,
-	      active: React.PropTypes.bool
-	    };
+	  propTypes: {
+	    type: React.PropTypes.string,
+	    active: React.PropTypes.bool
+	  },
 
-	    this.defaultProps = {
+	  getDefaultProps: function getDefaultProps() {
+	    return {
 	      type: "ball-pulse",
 	      active: true
 	    };
+	  },
+
+	  statics: {
+	    removeType: function removeType(key) {
+	      delete Types[key];
+	    },
+
+	    addType: function addType(key, nDivs) {
+	      Types[key] = nDivs;
+	    }
+	  },
+
+	  renderDiv: function renderDiv(n) {
+	    return React.createElement("div", { key: n });
+	  },
+
+	  render: function render() {
+	    var hidden = { display: !this.props.active ? "none" : "block" };
+	    var nDivs = range(Types[this.props.type || this.defaultProps.type]);
+	    return React.createElement(
+	      "div",
+	      { style: hidden, className: "loader " + (this.props.active ? "loader-active" : "") },
+	      React.createElement(
+	        "div",
+	        { className: "loader-inner " + this.props.type },
+	        nDivs.map(this.renderDiv)
+	      )
+	    );
 	  }
 
-	  _inherits(Loader, _React$Component);
-
-	  _createClass(Loader, {
-	    renderDiv: {
-	      value: function renderDiv(n) {
-	        return React.createElement("div", { key: n });
-	      }
-	    },
-	    render: {
-	      value: function render() {
-	        var hidden = { display: !this.props.active ? "none" : "block" };
-	        var nDivs = range(Types[this.props.type || this.defaultProps.type]);
-	        return React.createElement(
-	          "div",
-	          { style: hidden, className: "loader " + (this.props.active ? "loader-active" : "") },
-	          React.createElement(
-	            "div",
-	            { className: "loader-inner " + this.props.type },
-	            nDivs.map(this.renderDiv)
-	          )
-	        );
-	      }
-	    }
-	  }, {
-	    removeType: {
-	      value: function removeType(key) {
-	        delete Types[key];
-	      }
-	    },
-	    addType: {
-	      value: function addType(key, nDivs) {
-	        Types[key] = nDivs;
-	      }
-	    }
-	  });
-
-	  return Loader;
-	})(React.Component);
+	});
+	exports.Loader = Loader;
 
 /***/ },
 /* 1 */
