@@ -1,6 +1,27 @@
-$primary-color: #1A385A;
+$bg-color: #55B9ED;
+
+$loader-color: #1A385A;
+$loader-dither-color: darken(#55B9ED, 5%);
 
 @import "base";
+
+.loaders {
+  .loader {
+    // background: url('../img/crosshairs.png') no-repeat 50% 50%;
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+
+    &.loader-hidden {
+      opacity: 0;
+    }
+
+    &.loader-active {
+      opacity: 1;
+    }
+
+  }
+}
 
 html, body {
   padding: 0;
@@ -8,7 +29,7 @@ html, body {
   height: 100%;
   font-size: 16px;
   background: #55B9ED;
-  color: $primary-color;
+  color: $loader-color;
   font-family: 'Source Sans Pro'; }
 
 h1 {
@@ -57,7 +78,7 @@ main {
       height: 200px;
       align-items: center;
       justify-content: center; }
-
+      
 /**
  * Util classes
  */
@@ -76,15 +97,15 @@ main {
  * Buttons
  */
 .btn {
-  color: $primary-color;
+  color: $loader-color;
   padding: .75rem 1.25rem;
-  border: 2px solid $primary-color;
+  border: 2px solid $loader-color;
   border-radius: 4px;
   text-decoration: none;
   transition: transform .1s ease-out, border .1s ease-out, background-color .15s ease-out, color .1s ease-out;
   margin: 2rem 0; }
   .btn:hover {
     transform: scale(1.01562);
-    background-color: $primary-color;
+    background-color: $loader-color;
     color: #fff; }
 

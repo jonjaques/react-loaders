@@ -7,11 +7,13 @@ Lightweight wrapper around [Loaders.css](https://github.com/ConnorAtherton/loade
 ## Install
 
 ```
-npm install --save react-loaders
+npm install --save react-loaders loaders.css
 ```
 
 
 ## Usage
+
+Require the component.
 
 ```
 var Loader = require('react-loaders').Loader;
@@ -22,9 +24,18 @@ function renderLoader() {
 
 ```
 
-Add the appropriate [styles](https://github.com/ConnorAtherton/loaders.css/tree/master/src) to your stylesheet. Better options for this in the future.
+Import any of the animations you want to use.
 
 ```
-npm install --save ConnerAtherton/loaders.css
+$primary-color: $my-brand-color;
+@import 'loaders.css/src/animations/line-scale.scss'
+
+.loader-hidden {
+  display: none;
+}
+.loader-active {
+  display: block;
+}
 ```
 
+**If `@import`ing with Sass, make you use something like [autoprefixer](https://github.com/postcss/autoprefixer) to add backwards compatibility.**

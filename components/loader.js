@@ -65,9 +65,8 @@ export var Loader = React.createClass({
   },
 
   render() {
-    var hidden = { display: !this.props.active ? 'none' : 'block' }
     var nDivs = range(Types[this.props.type || this.defaultProps.type]);
-    return <div style={hidden} className={`loader ${this.props.active ? 'loader-active' : ''}`}>
+    return <div className={`loader ${this.props.active ? 'loader-active' : 'loader-hidden'}`}>
       <div className={`loader-inner ${this.props.type}`}>
         { nDivs.map(this.renderDiv) }
       </div>
