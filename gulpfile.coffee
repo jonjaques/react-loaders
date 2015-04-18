@@ -4,6 +4,7 @@ webpack   = require 'webpack'
 config    = require './webpack.config'
 gutil     = require 'gulp-util'
 sass      = require 'gulp-ruby-sass'
+prefixer  = require 'gulp-autoprefixer'
 react     = require 'react'
 fs        = require 'fs'
 
@@ -40,6 +41,7 @@ gulp.task 'app', (done)->
 gulp.task 'css', ->
   sass('assets/scss', {loadPath: ['./node_modules']}) 
     .on('error', (err)-> console.error('Error!', err.message))
+    .pipe(prefixer("last 2 versions", "> 1%", "ie 8", { map: false }))
     .pipe(gulp.dest('assets/css'))
 
 gulp.task 'watch', ['demo'], ->
