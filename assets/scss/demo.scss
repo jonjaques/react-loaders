@@ -1,7 +1,5 @@
-/**
- *
- *
- */
+$primary-color: #1A385A;
+
 @import "base";
 
 html, body {
@@ -9,8 +7,8 @@ html, body {
   margin: 0;
   height: 100%;
   font-size: 16px;
-  background: #ed5565;
-  color: #fff;
+  background: #55B9ED;
+  color: $primary-color;
   font-family: 'Source Sans Pro'; }
 
 h1 {
@@ -78,15 +76,15 @@ main {
  * Buttons
  */
 .btn {
-  color: #fff;
+  color: $primary-color;
   padding: .75rem 1.25rem;
-  border: 2px solid #fff;
+  border: 2px solid $primary-color;
   border-radius: 4px;
   text-decoration: none;
   transition: transform .1s ease-out, border .1s ease-out, background-color .15s ease-out, color .1s ease-out;
   margin: 2rem 0; }
   .btn:hover {
     transform: scale(1.01562);
-    background-color: #fff;
-    color: #ed5565; }
+    background-color: $primary-color;
+    color: #fff; }
 
