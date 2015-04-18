@@ -2,6 +2,8 @@
  *
  *
  */
+@import "base";
+
 html, body {
   padding: 0;
   margin: 0;
@@ -87,3 +89,4 @@ main {
     transform: scale(1.01562);
     background-color: #fff;
     color: #ed5565; }
+
