@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository" : { 
-    "type": "git", 
+  "repository": {
+    "type": "git",
     "url": "http://github.com/jonjaques/react-loaders.git"
   },
   "author": "Jon Jaques <jaquers@gmail.com>",
@@ -17,7 +17,9 @@
     "babel-loader": "^4.2.0",
     "coffee-script": "^1.9.1",
     "gulp": "^3.8.11",
+    "gulp-ruby-sass": "^1.0.1",
     "gulp-util": "^3.0.4",
+    "loaders.css": "^0.1.0",
     "webpack": "^1.7.3"
   },
   "dependencies": {

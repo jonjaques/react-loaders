@@ -1,16 +1,17 @@
-path = require 'path'
-gulp = require 'gulp'
-webpack = require 'webpack'
-config = require './webpack.config'
-gutil = require 'gulp-util'
-react = require 'react'
-fs = require 'fs'
+path      = require 'path'
+gulp      = require 'gulp'
+webpack   = require 'webpack'
+config    = require './webpack.config'
+gutil     = require 'gulp-util'
+sass      = require 'gulp-ruby-sass'
+react     = require 'react'
+fs        = require 'fs'
 
-gulp.task 'default', ['demo']
+gulp.task 'default', ['build']
 gulp.task 'build', ['demo']
 gulp.task 'dev', ['watch']
 
-gulp.task 'demo', ['app'], ->
+gulp.task 'demo', ['app', 'css'], ->
   demoPath = path.resolve './dist/react-loaders-demo'
   delete require.cache[demoPath]
   demo = require demoPath
@@ -20,8 +21,7 @@ gulp.task 'demo', ['app'], ->
     <!doctype html>
     <head>
     #{ link('http://fonts.googleapis.com/css?family=Source+Sans+Pro:600,300') }
-    #{ link('css/demo.css') }
-    #{ link('css/loaders.css') }
+    #{ link('assets/css/demo.css') }
     </head>
     <body>#{ demoHtml }
     <script src='dist/react-loaders-demo.js'></script>
@@ -37,5 +37,11 @@ gulp.task 'app', (done)->
     results.errors.map gutil.log if results.errors.length
     done()
 
+gulp.task 'css', ->
+  sass('assets/scss', {loadPath: ['./node_modules']}) 
+    .on('error', (err)-> console.error('Error!', err.message))
+    .pipe(gulp.dest('assets/css'))
+
 gulp.task 'watch', ['demo'], ->
   gulp.watch ['components/*.js'], ['demo']
+  gulp.watch ['assets/scss/**/*'], ['css']
