@@ -122,11 +122,10 @@ module.exports =
 	  },
 
 	  render: function render() {
-	    var hidden = { display: !this.props.active ? "none" : "block" };
 	    var nDivs = range(Types[this.props.type || this.defaultProps.type]);
 	    return React.createElement(
 	      "div",
-	      { style: hidden, className: "loader " + (this.props.active ? "loader-active" : "") },
+	      { className: "loader " + (this.props.active ? "loader-active" : "loader-hidden") },
 	      React.createElement(
 	        "div",
 	        { className: "loader-inner " + this.props.type },
