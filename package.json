@@ -1,6 +1,6 @@
 {
   "name": "react-loaders",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Lightweight wrapper around Loaders.css",
   "main": "./dist/react-loaders.js",
   "scripts": {
