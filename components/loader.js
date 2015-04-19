@@ -44,12 +44,14 @@ export const Loader = React.createClass({
 
   propTypes: {
     type: React.PropTypes.string,
+    size: React.PropTypes.string,
     active: React.PropTypes.bool
   },
 
   getDefaultProps() {
     return {
       type: 'ball-pulse',
+      size: 'md',
       active: true
     };
   },
@@ -64,13 +66,26 @@ export const Loader = React.createClass({
     }
   },
 
+  getLoaderClasses() {
+    var classes = 'loader';
+    if (this.props.size !== 'md') {
+      classes += ' loader-' + this.props.size
+    }
+    if (this.props.active) {
+      classes += ' loader-active'
+    } else {
+      classes += ' loader-hidden'
+    }
+    return classes;
+  },
+
   renderDiv(n) {
     return <div key={n} />
   },
 
   render() {
-    var nDivs = range(Types[this.props.type || this.defaultProps.type]);
-    return <div className={`loader ${this.props.active ? 'loader-active' : 'loader-hidden'}`}>
+    var nDivs = range(Types[this.props.type]);
+    return <div className={this.getLoaderClasses()}>
       <div className={`loader-inner ${this.props.type}`}>
         { nDivs.map(this.renderDiv) }
       </div>
