@@ -1,4 +1,5 @@
 var React = require('react');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 export var Types = {
   "ball-pulse"                  : 3,
@@ -36,7 +37,9 @@ function range(x) {
   return arr;
 }
 
-export var Loader = React.createClass({
+export const Loader = React.createClass({
+
+  mixins: [ PureRenderMixin ],
 
   propTypes: {
     type: React.PropTypes.string,
