@@ -1,6 +1,6 @@
 {
   "name": "react-loaders",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Lightweight wrapper around Loaders.css",
   "main": "./dist/react-loaders.js",
   "scripts": {
@@ -12,6 +12,7 @@
   },
   "author": "Jon Jaques <jaquers@gmail.com>",
   "license": "MIT",
+  "keywords": ["react-component"],
   "devDependencies": {
     "babel-core": "^4.7.16",
     "babel-loader": "^4.2.0",
@@ -22,10 +23,10 @@
     "gulp-ruby-sass": "^1.0.1",
     "gulp-util": "^3.0.4",
     "loaders.css": "jonjaques/loaders.css#react-loaders",
-    "webpack": "^1.7.3"
+    "webpack": "^1.7.3",
+    "react-bootstrap": "^0.20.3"
   },
   "dependencies": {
-    "react": "^0.13.1",
-    "react-bootstrap": "^0.20.3"
+    "react": "^0.13.1"
   }
 }
