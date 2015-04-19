@@ -15,6 +15,7 @@
   "devDependencies": {
     "babel-core": "^4.7.16",
     "babel-loader": "^4.2.0",
+    "bootstrap-sass": "^3.3.4",
     "coffee-script": "^1.9.1",
     "gulp": "^3.8.11",
     "gulp-autoprefixer": "^2.1.0",
@@ -24,6 +25,7 @@
     "webpack": "^1.7.3"
   },
   "dependencies": {
-    "react": "^0.13.1"
+    "react": "^0.13.1",
+    "react-bootstrap": "^0.20.3"
   }
 }

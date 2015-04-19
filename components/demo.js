@@ -1,24 +1,34 @@
-var React = require('react');
-var loader = require('./loader');
-var Loader = loader.Loader;
-var loaderTypes = loader.Types;
+import React from 'react'
+import { Grid, Col, Row } from 'react-bootstrap'
+import { Loader, Types as LoaderTypes } from './loader'
+
+const SizeLabels = {
+  'sm': 'Small',
+  'md': 'Medium',
+  'lg': 'Large'
+}
 
 export var LoaderDemo = React.createClass({
 
   getInitialState() {
     return {
-      selectedType: 'ball-beat',
+      selectedType: 'pacman',
+      selectedSize: 'md',
       seeAll: false,
       active: true
     };
   },
 
   componentDidMount() {
-    React.findDOMNode(this).className = "loaded";
+    React.findDOMNode(this).className = "container loaded";
   },
 
   selectType(e) {
     this.setState({ selectedType: e.target.value });
+  },
+
+  selectSize(e) {
+    this.setState({ selectedSize: e.target.value });
   },
 
   toggleSeeAll(e) {
@@ -33,63 +43,125 @@ export var LoaderDemo = React.createClass({
     return <option key={type} value={type}>{type}</option>
   },
 
+  renderSizeOptions(size) {
+    return <option key={size} value={size}>{SizeLabels[size]}</option>
+  },
+
+  renderSizeSelector() {
+    return <div className="form-group">
+      <label>
+        Size
+      </label>
+      <select 
+        className="form-control" 
+        value={this.state.selectedSize} 
+        onChange={this.selectSize}>
+        {Object.keys(SizeLabels).map(this.renderSizeOptions)}
+      </select>
+    </div>
+  },
+
   renderLoader(type) {
-    return <Loader key={type} type={type} active={this.state.active} />
+    return <div className="loader-container">
+      <Loader key={type} type={type} active={this.state.active} size={this.state.selectedSize} />
+      <p>{type}</p>
+    </div>
+  },
+
+  renderFakeLoader() {
+    let text = `let loader = <Loader type="${this.state.selectedType}"`
+    if (!this.state.active) {
+      text += ` active="${this.state.active}"` 
+    }
+    if (this.state.selectedSize !== 'md') {
+      text += ` size="${this.state.selectedSize}"`
+    }
+    text += ' />'
+    return text;
+  },
+
+  renderFakeSass() {
+    return `$primary-color: $my-brand-color;
+@import 'loaders.css/src/animations/${this.state.selectedType}.scss'
+
+.loader-hidden {
+  display: none;
+}
+.loader-active {
+  display: block;
+}`
   },
 
   render() {
     var hidden = { display: this.state.seeAll ? 'none' : '' };
-    var italic = { fontStyle: 'italic' };
-    var clearfix = { overflow: 'auto', marginBottom: 70 };
-    var loaderStyle = { paddingTop: 50, width: this.state.seeAll ? '75%' : '40%' };
-    return <main>
-      <header>
-        <section style={clearfix}>
-          <div className="left">
-            <h1>React Loaders</h1>
-            <h2 style={italic}>Powered by Loaders.css</h2>
-            <h2>{"Delightful and performance-focused pure css loading animations."}</h2>
-          </div>
-          <div className="right">
-            <a className="btn right" href="https://github.com/jonjaques/react-loaders">
-            View on Github
-            </a>
-          </div>
-        </section>
-        <section style={clearfix}>
-          <div className="left">
-            <p>
-              <label>See All
-              <input type="checkbox"
-                onChange={this.toggleSeeAll} />
-              </label>
-            </p>
-            <p style={hidden}>
-              <select 
-                value={this.state.selectedType} 
-                onChange={this.selectType}>
-                {Object.keys(loaderTypes).map(this.renderTypeOptions)}
-              </select>
-            </p>
-            <p style={hidden}>
-              <label>Active
+    return <Grid>
+      <Row>
+        <Col sm={9}>
+          <h1>React Loaders</h1>
+          <h2><em>Powered by <a href="https://github.com/ConnorAtherton/loaders.css">Loaders.css</a></em></h2>
+          <h2 style={{marginBottom: '1em'}}>Delightful and performance-focused pure css loading animations.</h2>
+        </Col>
+        <Col sm={3}>
+          <a className="btn btn-default btn-github btn-lg pull-right" href="https://github.com/jonjaques/react-loaders">
+          View on Github
+          </a>
+        </Col>
+      </Row>
+      <Row>
+        <Col sm={7}>
+          <pre className="hidden-xs" data-type="shell">{"npm i --save react-loaders"}</pre>
+          <pre className="hidden-xs" data-type="js">
+            {"import { Loader } from 'react-loaders'"}
+            <br style={hidden} />
+            <br style={hidden} />
+            {!this.state.seeAll && this.renderFakeLoader()}
+          </pre>
+          <pre className="hidden-xs" data-type="scss">
+          {this.renderFakeSass()}
+          </pre>
+        </Col>
+        <Col sm={4} smOffset={1}>
+          <form>
+            <div className="checkbox">
+              <label>
               <input type="checkbox"
                 defaultChecked="true"
                 onChange={this.toggleActive} 
-              />
+              />Active
               </label>
-            </p>
-          </div>
-          <div className="right" style={loaderStyle}>
-            <div className="loaders">
-              { this.state.seeAll 
-                ? Object.keys(loaderTypes).map(this.renderLoader)
-                : this.renderLoader(this.state.selectedType) }
             </div>
+            
+            <div className="checkbox">
+              <label>
+                <input type="checkbox"
+                  onChange={this.toggleSeeAll} />See All
+              </label>
+            </div>
+
+            <div style={hidden} className="form-group">
+              <label>
+                Type
+              </label>
+              <select 
+                className="form-control" 
+                value={this.state.selectedType} 
+                onChange={this.selectType}>
+                {Object.keys(LoaderTypes).map(this.renderTypeOptions)}
+              </select>
+            </div>
+          </form>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12}>
+          <div className={this.state.seeAll ? "loaders" : "loaders single"}>
+            { this.state.seeAll 
+              ? Object.keys(LoaderTypes).map(this.renderLoader)
+              : this.renderLoader(this.state.selectedType) }
           </div>
-        </section>
-      </header>
-    </main>
+        </Col>
+      </Row>
+    </Grid>
   }
 
 });

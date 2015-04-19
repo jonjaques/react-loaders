@@ -1,4 +1,6 @@
 
+@import 'variables';
+
 @import 'loaders.css/src/variables';
 @import 'loaders.css/src/mixins';
 
@@ -42,3 +44,5 @@
 @import 'loaders.css/src/animations/pacman';
 @import 'loaders.css/src/animations/cube-transition';
 @import 'loaders.css/src/animations/semi-circle-spin';
+
+@import 'bootstrap';

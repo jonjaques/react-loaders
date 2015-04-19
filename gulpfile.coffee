@@ -21,6 +21,7 @@ gulp.task 'demo', ['app', 'css'], ->
   demoTpl = """
     <!doctype html>
     <head>
+    <meta name="viewport" content="width=device-width" />
     #{ link('http://fonts.googleapis.com/css?family=Source+Sans+Pro:600,300') }
     #{ link('assets/css/demo.css') }
     </head>
@@ -38,8 +39,14 @@ gulp.task 'app', (done)->
     results.errors.map gutil.log if results.errors.length
     done()
 
+
+sassLoadPaths = [
+  './node_modules'
+  './node_modules/bootstrap-sass/assets/stylesheets'
+]
+
 gulp.task 'css', ->
-  sass('assets/scss', {loadPath: ['./node_modules']}) 
+  sass('assets/scss', {loadPath: sassLoadPaths}) 
     .on('error', (err)-> console.error('Error!', err.message))
     .pipe(prefixer("last 2 versions", "> 1%", "ie 8", { map: false }))
     .pipe(gulp.dest('assets/css'))
