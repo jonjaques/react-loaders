@@ -28,7 +28,8 @@ export var Types = {
   "line-spin-fade-loader"       : 8,
   "triangle-skew-spin"          : 1,
   "pacman"                      : 5,
-  "ball-grid-beat"              : 9
+  "ball-grid-beat"              : 9,
+  "semi-circle-spin"            : 1
 }
 
 function range(x) {
