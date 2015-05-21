@@ -5,7 +5,7 @@ baseConfig =
   output:
     path: './dist'
     filename: 'react-[name].js'
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'umd'
   module:
     loaders: [{
       test: /\.js$/
@@ -20,12 +20,13 @@ loaderBundle =
     name: 'loaders'
     entry:
      'loaders': './components/loader.js'
-    externals:
-      react: 'react'
+    externals: [
+      "react", "react/addons"
+    ]
   })
 
 loaderMinBundle = merge({}, loaderBundle)
-loaderMinBundle.name = loaderBundle.name += '.min'
+loaderMinBundle.name = loaderBundle.name + '.min'
 loaderMinBundle.entry = 'loaders.min': loaderBundle.entry.loaders
 loaderMinBundle.plugins = [ new webpack.optimize.UglifyJsPlugin() ]
 
