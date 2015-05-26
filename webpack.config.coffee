@@ -38,7 +38,7 @@ demoBundle =
     output: 
       libraryTarget: 'umd'
       library: 'LoaderDemo'
-    plugins: [  ]
+    plugins: [ new webpack.optimize.UglifyJsPlugin() ]
   })
 
 module.exports = [ loaderBundle, loaderMinBundle, demoBundle ]

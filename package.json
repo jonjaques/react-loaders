@@ -4,7 +4,7 @@
   "description": "Lightweight wrapper around Loaders.css",
   "main": "./dist/react-loaders.js",
   "scripts": {
-    "test": "browserify ./test/browserify-compat.js > ./test/browserify-demo.js"
+    "test": "browserify -r react > ./test/react.js && browserify -x react ./test/browserify-compat.js > ./test/browserify-demo.js"
   },
   "repository": {
     "type": "git",
