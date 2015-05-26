@@ -1,5 +1,4 @@
-var React = require('react/addons');
-var PureRenderMixin = React.PureRenderMixin;
+import { default as React, PureRenderMixin } from 'react/addons'
 
 export var Types = {
   "ball-pulse"                  : 3,

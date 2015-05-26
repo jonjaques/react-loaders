@@ -56,12 +56,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 
+	var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var React = __webpack_require__(1);
-	var PureRenderMixin = React.PureRenderMixin;
 
+	var _reactAddons = __webpack_require__(1);
+
+	var React = _interopRequire(_reactAddons);
+
+	var PureRenderMixin = _reactAddons.PureRenderMixin;
 	var Types = {
 	  "ball-pulse": 3,
 	  "ball-grid-pulse": 9,

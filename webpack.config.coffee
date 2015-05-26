@@ -21,7 +21,7 @@ loaderBundle =
     entry:
      'loaders': './components/loader.js'
     externals: [
-      "react", "react/addons"
+      "react/addons"
     ]
   })
 

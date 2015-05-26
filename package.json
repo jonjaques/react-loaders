@@ -24,8 +24,8 @@
     "gulp-autoprefixer": "^2.1.0",
     "gulp-ruby-sass": "^1.0.1",
     "gulp-util": "^3.0.4",
-    "loaders.css": "jonjaques/loaders.css#react-loaders",
     "lodash": "^3.9.1",
+    "loaders.css": "^0.1.1",
     "react-bootstrap": "^0.20.3",
     "webpack": "^1.7.3"
   },
