@@ -66,7 +66,7 @@ export const Loader = React.createClass({
   },
 
   getLoaderClasses() {
-    var classes = 'loader';
+    var classes = 'loader '+ this.props.className;    
     if (this.props.size !== 'md') {
       classes += ' loader-' + this.props.size
     }
@@ -86,7 +86,7 @@ export const Loader = React.createClass({
   render() {
     var nDivs = range(Types[this.props.type]);
     return <div className={this.getLoaderClasses()}>
-      <div className={`loader-inner ${this.props.type} ${this.props.className}`}>
+      <div className={`loader-inner ${this.props.type}`}>
         { nDivs.map(this.renderDiv) }
       </div>
     </div>
