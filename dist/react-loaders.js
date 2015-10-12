@@ -138,6 +138,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 	  getLoaderClasses: function getLoaderClasses() {
+		  
+		var classes = 'loader '+ this.props.className;    
+
 	    var classes = "loader";
 	    if (this.props.size !== "md") {
 	      classes += " loader-" + this.props.size;
