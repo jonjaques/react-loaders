@@ -75,6 +75,7 @@ export const Loader = React.createClass({
     } else {
       classes += ' loader-hidden'
     }
+        
     return classes;
   },
 
@@ -85,7 +86,7 @@ export const Loader = React.createClass({
   render() {
     var nDivs = range(Types[this.props.type]);
     return <div className={this.getLoaderClasses()}>
-      <div className={`loader-inner ${this.props.type}`}>
+      <div className={`loader-inner ${this.props.type} ${this.props.className}`}>
         { nDivs.map(this.renderDiv) }
       </div>
     </div>
