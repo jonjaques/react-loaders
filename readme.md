@@ -17,6 +17,7 @@ Require the component.
 
 ```
 var Loader = require('react-loaders').Loader;
+// also available as `default`
 
 function renderLoader() {
   return <Loader type="line-scale" active="true" />
