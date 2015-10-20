@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react/addons"));
+		module.exports = factory(require("react"), require("merge"), require("classnames"));
 	else if(typeof define === 'function' && define.amd)
-		define(["react/addons"], factory);
+		define(["react", "merge", "classnames"], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("react/addons")) : factory(root["react/addons"]);
+		var a = typeof exports === 'object' ? factory(require("react"), require("merge"), require("classnames")) : factory(root["react"], root["merge"], root["classnames"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -54,19 +54,103 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
-	var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
-
-	Object.defineProperty(exports, "__esModule", {
+	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
 
-	var _reactAddons = __webpack_require__(1);
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-	var React = _interopRequire(_reactAddons);
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-	var PureRenderMixin = _reactAddons.PureRenderMixin;
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _merge = __webpack_require__(2);
+
+	var _merge2 = _interopRequireDefault(_merge);
+
+	var _classnames2 = __webpack_require__(3);
+
+	var _classnames3 = _interopRequireDefault(_classnames2);
+
+	var Loader = (function (_Component) {
+	  _inherits(Loader, _Component);
+
+	  function Loader() {
+	    _classCallCheck(this, Loader);
+
+	    _get(Object.getPrototypeOf(Loader.prototype), 'constructor', this).apply(this, arguments);
+	  }
+
+	  _createClass(Loader, [{
+	    key: 'renderDiv',
+	    value: function renderDiv(n) {
+	      return _react2['default'].createElement('div', { key: n });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _classnames;
+
+	      var nDivs = range(Types[this.props.type]);
+	      var classes = (0, _classnames3['default'])((_classnames = {
+	        loader: true
+	      }, _defineProperty(_classnames, 'loader-' + this.props.size, this.props.size !== 'md'), _defineProperty(_classnames, 'loader-active', this.props.active), _defineProperty(_classnames, 'loader-hidden', !this.props.active), _classnames), this.props.className);
+
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: classes },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'loader-inner ' + this.props.type },
+	          nDivs.map(this.renderDiv)
+	        )
+	      );
+	    }
+	  }], [{
+	    key: 'removeType',
+	    value: function removeType(type) {
+	      delete Types[key];
+	    }
+	  }, {
+	    key: 'addType',
+	    value: function addType(key, nDivs) {
+	      return Types[key] = nDivs;
+	    }
+	  }, {
+	    key: 'propTypes',
+	    value: {
+	      type: _react2['default'].PropTypes.string,
+	      size: _react2['default'].PropTypes.string,
+	      active: _react2['default'].PropTypes.bool
+	    },
+	    enumerable: true
+	  }, {
+	    key: 'defaultProps',
+	    value: {
+	      type: 'ball-pulse',
+	      size: 'md',
+	      active: true
+	    },
+	    enumerable: true
+	  }]);
+
+	  return Loader;
+	})(_react.Component);
+
+	exports.Loader = Loader;
+	exports['default'] = Loader;
 	var Types = {
 	  "ball-pulse": 3,
 	  "ball-grid-pulse": 9,
@@ -93,7 +177,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  "ball-spin-fade-loader": 8,
 	  "line-spin-fade-loader": 8,
 	  "triangle-skew-spin": 1,
-	  pacman: 5,
+	  "pacman": 5,
 	  "ball-grid-beat": 9,
 	  "semi-circle-spin": 1
 	};
@@ -108,73 +192,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return arr;
 	}
 
-	var Loader = React.createClass({
-	  displayName: "Loader",
-
-	  mixins: [PureRenderMixin],
-
-	  propTypes: {
-	    type: React.PropTypes.string,
-	    size: React.PropTypes.string,
-	    active: React.PropTypes.bool
-	  },
-
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      type: "ball-pulse",
-	      size: "md",
-	      active: true
-	    };
-	  },
-
-	  statics: {
-	    removeType: function removeType(key) {
-	      delete Types[key];
-	    },
-
-	    addType: function addType(key, nDivs) {
-	      Types[key] = nDivs;
-	    }
-	  },
-
-	  getLoaderClasses: function getLoaderClasses() {
-	    var classes = "loader";
-	    if (this.props.size !== "md") {
-	      classes += " loader-" + this.props.size;
-	    }
-	    if (this.props.active) {
-	      classes += " loader-active";
-	    } else {
-	      classes += " loader-hidden";
-	    }
-	    return classes;
-	  },
-
-	  renderDiv: function renderDiv(n) {
-	    return React.createElement("div", { key: n });
-	  },
-
-	  render: function render() {
-	    var nDivs = range(Types[this.props.type]);
-	    return React.createElement(
-	      "div",
-	      { className: this.getLoaderClasses() },
-	      React.createElement(
-	        "div",
-	        { className: "loader-inner " + this.props.type },
-	        nDivs.map(this.renderDiv)
-	      )
-	    );
-	  }
-
-	});
-	exports.Loader = Loader;
-
 /***/ },
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
 
 /***/ }
 /******/ ])
