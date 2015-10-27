@@ -1,52 +1,4 @@
-import React, { Component }  from 'react'
-import merge                 from 'merge'
-import classnames            from 'classnames'
-
-export class Loader extends Component {
-
-  static propTypes = {
-    type: React.PropTypes.string,
-    size: React.PropTypes.string,
-    active: React.PropTypes.bool
-  };
-
-  static defaultProps = {
-    type: 'ball-pulse',
-    size: 'md',
-    active: true
-  };
-
-  static removeType(type) {
-    delete Types[key]
-  }
-
-  static addType(key, nDivs) {
-    return Types[key] = nDivs;
-  }
-
-  renderDiv(n) {
-    return <div key={n} />
-  }
-
-  render() {
-    const nDivs = range(Types[this.props.type]);
-    const classes = classnames({
-      loader: true,
-      ['loader-' + this.props.size]: this.props.size !== 'md',
-      'loader-active': this.props.active,
-      'loader-hidden': !this.props.active
-    }, this.props.className)
-
-    return <div className={classes}>
-      <div className={`loader-inner ${this.props.type}`}>
-        { nDivs.map(this.renderDiv) }
-      </div>
-    </div>
-  }
-
-}
-
-export default Loader;
+import { default as React, PureRenderMixin } from 'react/addons'
 
 export var Types = {
   "ball-pulse"                  : 3,
@@ -84,3 +36,59 @@ function range(x) {
   while(++i < x) { arr.push(i) }
   return arr;
 }
+
+export const Loader = React.createClass({
+
+  mixins: [ PureRenderMixin ],
+
+  propTypes: {
+    type: React.PropTypes.string,
+    size: React.PropTypes.string,
+    active: React.PropTypes.bool
+  },
+
+  getDefaultProps() {
+    return {
+      type: 'ball-pulse',
+      size: 'md',
+      active: true
+    };
+  },
+
+  statics: {
+    removeType(key) {
+      delete Types[key];
+    },
+
+    addType(key, nDivs) {
+      Types[key] = nDivs;
+    }
+  },
+
+  getLoaderClasses() {
+    var classes = 'loader';
+    if (this.props.size !== 'md') {
+      classes += ' loader-' + this.props.size
+    }
+    if (this.props.active) {
+      classes += ' loader-active'
+    } else {
+      classes += ' loader-hidden'
+    }
+    return classes;
+  },
+
+  renderDiv(n) {
+    return <div key={n} />
+  },
+
+  render() {
+    var nDivs = range(Types[this.props.type]);
+    return <div className={this.getLoaderClasses()}>
+      <div className={`loader-inner ${this.props.type}`}>
+        { nDivs.map(this.renderDiv) }
+      </div>
+    </div>
+  }
+
+});

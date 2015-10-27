@@ -25,8 +25,7 @@ gulp.task 'demo', ['app', 'css'], ->
     #{ link('http://fonts.googleapis.com/css?family=Source+Sans+Pro:600,300') }
     #{ link('assets/css/demo.css') }
     </head>
-    <body>
-    <div id="container">#{ demoHtml }</div>
+    <body>#{ demoHtml }
     <script src='dist/react-loaders-demo.js'></script>
     <script>LoaderDemo.run()</script>
     </body>
@@ -47,7 +46,7 @@ sassLoadPaths = [
 ]
 
 gulp.task 'css', ->
-  sass('assets/scss', {loadPath: sassLoadPaths})
+  sass('assets/scss', {loadPath: sassLoadPaths}) 
     .on('error', (err)-> console.error('Error!', err.message))
     .pipe(prefixer("last 2 versions", "> 1%", "ie 8", { map: false }))
     .pipe(gulp.dest('assets/css'))

@@ -1,7 +1,7 @@
 webpack = require 'webpack'
 merge = require 'lodash/object/merge'
 
-baseConfig =
+baseConfig = 
   output:
     path: './dist'
     filename: 'react-[name].js'
@@ -10,21 +10,18 @@ baseConfig =
     loaders: [{
       test: /\.js$/
       exclude: /node_modules/
-      loader: 'babel-loader?stage=0'
+      loader: 'babel-loader'
     }]
 
 bundle = (o)-> merge {}, baseConfig, o
 
-loaderBundle =
+loaderBundle = 
   bundle({
     name: 'loaders'
     entry:
      'loaders': './components/loader.js'
     externals: [
-      "react"
-      "react-dom"
-      "classnames"
-      "merge"
+      "react/addons"
     ]
   })
 
@@ -38,7 +35,7 @@ demoBundle =
     name: 'loaders-demo'
     entry:
       'loaders-demo': './components/demo.js'
-    output:
+    output: 
       libraryTarget: 'umd'
       library: 'LoaderDemo'
     plugins: [ new webpack.optimize.UglifyJsPlugin() ]
