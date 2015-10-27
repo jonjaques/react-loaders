@@ -66,7 +66,7 @@ export const Loader = React.createClass({
   },
 
   getLoaderClasses() {
-    var classes = 'loader';
+    var classes = 'loader '+ this.props.className;    
     if (this.props.size !== 'md') {
       classes += ' loader-' + this.props.size
     }
@@ -75,6 +75,7 @@ export const Loader = React.createClass({
     } else {
       classes += ' loader-hidden'
     }
+        
     return classes;
   },
 

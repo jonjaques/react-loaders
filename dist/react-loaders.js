@@ -138,7 +138,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 	  getLoaderClasses: function getLoaderClasses() {
-	    var classes = "loader";
+	    var classes = "loader " + this.props.className;
 	    if (this.props.size !== "md") {
 	      classes += " loader-" + this.props.size;
 	    }
@@ -147,6 +147,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    } else {
 	      classes += " loader-hidden";
 	    }
+
 	    return classes;
 	  },
 
@@ -172,7 +173,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
 
