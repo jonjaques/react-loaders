@@ -1,6 +1,8 @@
-import React from 'react'
-import { Grid, Col, Row } from 'react-bootstrap'
-import { Loader, Types as LoaderTypes } from './loader'
+import React, { Component } from 'react'
+import ReactDOM, { render as Render } from 'react-dom'
+import { renderToString }   from 'react-dom/server'
+import { Grid, Col, Row }   from 'react-bootstrap'
+import Loader, { Types }    from './loader'
 
 const SizeLabels = {
   'sm': 'Small',
@@ -8,77 +10,75 @@ const SizeLabels = {
   'lg': 'Large'
 }
 
-export var LoaderDemo = React.createClass({
+export class LoaderDemo extends Component {
 
-  getInitialState() {
-    return {
-      selectedType: 'pacman',
-      selectedSize: 'md',
-      seeAll: false,
-      active: true
-    };
-  },
+  state = {
+    selectedType: 'pacman',
+    selectedSize: 'md',
+    seeAll: false,
+    active: true
+  }
 
   componentDidMount() {
-    React.findDOMNode(this).className = "container loaded";
-  },
+    ReactDOM.findDOMNode(this).className = "container loaded";
+  }
 
   selectType(e) {
     this.setState({ selectedType: e.target.value });
-  },
+  }
 
   selectSize(e) {
     this.setState({ selectedSize: e.target.value });
-  },
+  }
 
   toggleSeeAll(e) {
     this.setState({ seeAll: !this.state.seeAll })
-  },
+  }
 
   toggleActive(e) {
     this.setState({ active: !this.state.active })
-  },
+  }
 
   renderTypeOptions(type) {
     return <option key={type} value={type}>{type}</option>
-  },
+  }
 
   renderSizeOptions(size) {
     return <option key={size} value={size}>{SizeLabels[size]}</option>
-  },
+  }
 
   renderSizeSelector() {
     return <div className="form-group">
       <label>
         Size
       </label>
-      <select 
-        className="form-control" 
-        value={this.state.selectedSize} 
+      <select
+        className="form-control"
+        value={this.state.selectedSize}
         onChange={this.selectSize}>
         {Object.keys(SizeLabels).map(this.renderSizeOptions)}
       </select>
     </div>
-  },
+  }
 
   renderLoader(type) {
     return <div className="loader-container">
       <Loader key={type} type={type} active={this.state.active} size={this.state.selectedSize} />
       <p>{type}</p>
     </div>
-  },
+  }
 
   renderFakeLoader() {
     let text = `let loader = <Loader type="${this.state.selectedType}"`
     if (!this.state.active) {
-      text += ` active="${this.state.active}"` 
+      text += ` active="${this.state.active}"`
     }
     if (this.state.selectedSize !== 'md') {
       text += ` size="${this.state.selectedSize}"`
     }
     text += ' />'
     return text;
-  },
+  }
 
   renderFakeSass() {
     return `$primary-color: $my-brand-color;
@@ -90,7 +90,7 @@ export var LoaderDemo = React.createClass({
 .loader-active {
   display: block;
 }`
-  },
+  }
 
   render() {
     var hidden = { display: this.state.seeAll ? 'none' : '' };
@@ -111,7 +111,7 @@ export var LoaderDemo = React.createClass({
         <Col sm={7}>
           <pre className="hidden-xs" data-type="shell">{"npm i --save react-loaders"}</pre>
           <pre className="hidden-xs" data-type="js">
-            {"import { Loader } from 'react-loaders'"}
+            {"import Loader from 'react-loaders'"}
             <br style={hidden} />
             <br style={hidden} />
             {!this.state.seeAll && this.renderFakeLoader()}
@@ -126,15 +126,15 @@ export var LoaderDemo = React.createClass({
               <label>
               <input type="checkbox"
                 defaultChecked="true"
-                onChange={this.toggleActive} 
+                onChange={::this.toggleActive}
               />Active
               </label>
             </div>
-            
+
             <div className="checkbox">
               <label>
                 <input type="checkbox"
-                  onChange={this.toggleSeeAll} />See All
+                  onChange={::this.toggleSeeAll} />See All
               </label>
             </div>
 
@@ -142,11 +142,11 @@ export var LoaderDemo = React.createClass({
               <label>
                 Type
               </label>
-              <select 
-                className="form-control" 
-                value={this.state.selectedType} 
-                onChange={this.selectType}>
-                {Object.keys(LoaderTypes).map(this.renderTypeOptions)}
+              <select
+                className="form-control"
+                value={this.state.selectedType}
+                onChange={::this.selectType}>
+                {Object.keys(Types).map(::this.renderTypeOptions)}
               </select>
             </div>
           </form>
@@ -155,8 +155,8 @@ export var LoaderDemo = React.createClass({
       <Row>
         <Col xs={12}>
           <div className={this.state.seeAll ? "loaders" : "loaders single"}>
-            { this.state.seeAll 
-              ? Object.keys(LoaderTypes).map(this.renderLoader)
+            { this.state.seeAll
+              ? Object.keys(Types).map(::this.renderLoader)
               : this.renderLoader(this.state.selectedType) }
           </div>
         </Col>
@@ -164,12 +164,12 @@ export var LoaderDemo = React.createClass({
     </Grid>
   }
 
-});
+}
 
 export function run() {
-  React.render(<LoaderDemo />, document.body);
+  Render(<LoaderDemo />, document.querySelector('#container'));
 }
 
 export function render() {
-  return React.renderToString(<LoaderDemo />);
+  return renderToString(<LoaderDemo />);
 }
