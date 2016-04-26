@@ -26,16 +26,16 @@
     "gulp-ruby-sass": "^1.0.1",
     "gulp-util": "^3.0.4",
     "loaders.css": "^0.1.1",
-    "lodash": "^3.9.1",
-    "react-bootstrap": "^0.20.3",
-    "react-dom": "^0.14.0",
+    "lodash": "^4.5.0",
+    "react-bootstrap": "^0.29.1",
+    "react-dom": "^15.0.0",
     "webpack": "^1.7.3"
   },
   "peerDependencies": {
-    "react": "^0.14.0"
+    "react": "^15.0.1"
   },
   "dependencies": {
-    "classnames": "^2.2.0",
+    "classnames": "^2.2.3",
     "merge": "^1.2.0"
   }
 }
