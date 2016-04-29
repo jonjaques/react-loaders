@@ -1,5 +1,4 @@
 import React, { Component }  from 'react'
-import merge                 from 'merge'
 import classnames            from 'classnames'
 
 export class Loader extends Component {
