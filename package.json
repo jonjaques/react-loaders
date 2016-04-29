@@ -25,17 +25,14 @@
     "gulp-autoprefixer": "^2.1.0",
     "gulp-ruby-sass": "^1.0.1",
     "gulp-util": "^3.0.4",
-    "loaders.css": "^0.1.1",
+    "loaders.css": "^0.1.2",
     "lodash": "^4.5.0",
     "react-bootstrap": "^0.29.1",
-    "react-dom": "^15.0.0",
+    "react-dom": "^15.0.1",
     "webpack": "^1.7.3"
-  },
-  "peerDependencies": {
-    "react": "^15.0.1"
   },
   "dependencies": {
     "classnames": "^2.2.3",
-    "merge": "^1.2.0"
+    "react": "^15.0.1"
   }
 }
