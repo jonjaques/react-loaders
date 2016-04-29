@@ -1,5 +1,5 @@
 webpack = require 'webpack'
-merge = require 'lodash/object/merge'
+{ merge } = require 'lodash'
 
 baseConfig =
   output:
