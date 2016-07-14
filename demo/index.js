@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM, { render as Render } from 'react-dom'
 import { renderToString }   from 'react-dom/server'
 import { Grid, Col, Row }   from 'react-bootstrap'
-import Loader, { Types }    from './loader'
+import Loader, { Types }    from '../src'
 
 const SizeLabels = {
   'sm': 'Small',
@@ -63,7 +63,7 @@ export class LoaderDemo extends Component {
 
   renderLoader(type) {
     return <div className="loader-container">
-      <Loader key={type} type={type} active={this.state.active} size={this.state.selectedSize} />
+      <Loader key={type} type={type} active={this.state.active} size={this.state.selectedSize} color="red" />
       <p>{type}</p>
     </div>
   }

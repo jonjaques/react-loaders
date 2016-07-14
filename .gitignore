@@ -1,5 +1,4 @@
 node_modules
 .sass-cache
-test/browserify-demo.js
-test/react.js
 .DS_Store
+dist

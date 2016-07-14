@@ -6,7 +6,8 @@ export class Loader extends Component {
   static propTypes = {
     type: React.PropTypes.string,
     size: React.PropTypes.string,
-    active: React.PropTypes.bool
+    active: React.PropTypes.bool,
+    color: React.PropTypes.string
   };
 
   static defaultProps = {
@@ -24,7 +25,11 @@ export class Loader extends Component {
   }
 
   renderDiv(n) {
-    return <div key={n} />
+    const styles = this.props.styles || {}
+    if (this.props.color) {
+      styles.backgroundColor = this.props.color
+    }
+    return <div key={n} style={styles} />
   }
 
   render() {
@@ -38,7 +43,7 @@ export class Loader extends Component {
 
     return <div className={classes}>
       <div className={`loader-inner ${this.props.type}`}>
-        { nDivs.map(this.renderDiv) }
+        { nDivs.map(::this.renderDiv) }
       </div>
     </div>
   }

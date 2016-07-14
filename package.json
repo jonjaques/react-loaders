@@ -2,9 +2,10 @@
   "name": "react-loaders",
   "version": "2.1.1",
   "description": "Lightweight wrapper around Loaders.css",
-  "main": "./dist/react-loaders.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "test": "browserify -r react > ./test/react.js && browserify -x react ./test/browserify-compat.js > ./test/browserify-demo.js"
+    "build": "NODE_ENV=production gulp demo",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -16,23 +17,28 @@
     "react-component"
   ],
   "devDependencies": {
-    "babel-core": "^5.8.25",
-    "babel-loader": "^5.3.2",
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
     "bootstrap-sass": "^3.3.4",
-    "browserify": "^11.2.0",
-    "coffee-script": "^1.9.1",
-    "gulp": "^3.8.11",
+    "gulp": "^3.9.1",
     "gulp-autoprefixer": "^2.1.0",
     "gulp-ruby-sass": "^1.0.1",
     "gulp-util": "^3.0.4",
+    "gulp-webpack": "^1.5.0",
     "loaders.css": "^0.1.2",
     "lodash": "^4.5.0",
     "react-bootstrap": "^0.29.1",
-    "react-dom": "^15.0.1",
-    "webpack": "^1.7.3"
+    "react-addons-test-utils": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "reactcss": "^1.0.4",
+    "webpack": "^1.13.1",
+    "webpack-node-externals": "^1.2.0"
   },
   "dependencies": {
     "classnames": "^2.2.3",
-    "react": "^15.0.1"
+    "react": "^15.1.0"
   }
 }
