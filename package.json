@@ -3,6 +3,7 @@
   "version": "2.1.1",
   "description": "Lightweight wrapper around Loaders.css",
   "main": "./dist/react-loaders.js",
+  "typings": "./dist/react-loaders",
   "scripts": {
     "test": "browserify -r react > ./test/react.js && browserify -x react ./test/browserify-compat.js > ./test/browserify-demo.js"
   },
