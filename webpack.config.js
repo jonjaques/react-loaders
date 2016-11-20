@@ -7,7 +7,7 @@ module.exports = [
     entry: './src/index',
     output: {
       path: path.resolve('dist'),
-      filename: "index.js",
+      filename: "react-loaders.js",
       libraryTarget: 'commonjs'
     },
     externals: [externals],

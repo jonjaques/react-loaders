@@ -2,7 +2,8 @@
   "name": "react-loaders",
   "version": "2.1.1",
   "description": "Lightweight wrapper around Loaders.css",
-  "main": "./dist/index.js",
+  "main": "./dist/react-loaders.js",
+  "typings": "./dist/react-loaders",
   "scripts": {
     "build": "NODE_ENV=production gulp demo",
     "prepublish": "npm run build"
