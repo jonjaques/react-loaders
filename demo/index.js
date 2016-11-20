@@ -63,7 +63,7 @@ export class LoaderDemo extends Component {
 
   renderLoader(type) {
     return <div className="loader-container">
-      <Loader key={type} type={type} active={this.state.active} size={this.state.selectedSize} color="red" />
+      <Loader key={type} type={type} active={this.state.active} size={this.state.selectedSize} />
       <p>{type}</p>
     </div>
   }
