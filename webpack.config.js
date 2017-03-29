@@ -1,6 +1,7 @@
 var path = require('path')
 var webpack = require('webpack')
 var externals = require('webpack-node-externals')()
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = [
   {
@@ -13,9 +14,11 @@ module.exports = [
     externals: [externals],
     module: {
       loaders: [
-        { test: /\.js$/, loader: 'babel' }
+        { test: /\.js$/, loader: 'babel-loader' }
       ]
-    }
+    },
+    plugins: [
+    ]
   },
   {
     entry: './demo/index',
@@ -27,11 +30,12 @@ module.exports = [
     },
     module: {
       loaders: [
-        { test: /\.js$/, loader: 'babel' }
+        { test: /\.js$/, loader: 'babel-loader' }
       ]
     },
     plugins: [
-      new webpack.optimize.UglifyJsPlugin()
+      new webpack.EnvironmentPlugin(['NODE_ENV']),
+      new UglifyJsPlugin({sourceMap: true})
     ]
   }
 ]
