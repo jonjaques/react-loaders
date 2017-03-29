@@ -71,7 +71,7 @@ export class LoaderDemo extends Component {
   renderFakeLoader() {
     let text = `let loader = <Loader type="${this.state.selectedType}"`
     if (!this.state.active) {
-      text += ` active="${this.state.active}"`
+      text += ` active={${this.state.active}}`
     }
     if (this.state.selectedSize !== 'md') {
       text += ` size="${this.state.selectedSize}"`
