@@ -6,9 +6,9 @@
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -76,10 +76,16 @@ module.exports = require("classnames");
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = require("react");
+module.exports = require("prop-types");
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+module.exports = require("react");
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -92,9 +98,13 @@ exports.Types = exports.Loader = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(1);
+var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _classnames2 = __webpack_require__(0);
 
@@ -164,10 +174,10 @@ var Loader = exports.Loader = function (_Component) {
 }(_react.Component);
 
 Loader.propTypes = {
-  type: _react2.default.PropTypes.string,
-  size: _react2.default.PropTypes.string,
-  active: _react2.default.PropTypes.bool,
-  color: _react2.default.PropTypes.string
+  type: _propTypes2.default.string,
+  size: _propTypes2.default.string,
+  active: _propTypes2.default.bool,
+  color: _propTypes2.default.string
 };
 Loader.defaultProps = {
   type: 'ball-pulse',
