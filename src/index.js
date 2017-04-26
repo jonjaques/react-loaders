@@ -1,13 +1,14 @@
 import React, { Component }  from 'react'
+import PropTypes from 'prop-types'
 import classnames            from 'classnames'
 
 export class Loader extends Component {
 
   static propTypes = {
-    type: React.PropTypes.string,
-    size: React.PropTypes.string,
-    active: React.PropTypes.bool,
-    color: React.PropTypes.string
+    type: PropTypes.string,
+    size: PropTypes.string,
+    active: PropTypes.bool,
+    color: PropTypes.string
   };
 
   static defaultProps = {
