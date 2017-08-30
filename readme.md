@@ -15,7 +15,7 @@ npm install --save react-loaders loaders.css
 
 Require the component.
 
-```
+```js
 var Loader = require('react-loaders').Loader;
 // also available as `default`
 
@@ -27,8 +27,11 @@ function renderLoader() {
 
 Import any of the animations you want to use.
 
-```
+```scss
 $primary-color: $my-brand-color;
+// How you import this will depend heavily on your build setup
+// If using webpack though, `~` refers to node_modules
+// @import '~loaders.css/src/animations/line-scale.scss'
 @import 'loaders.css/src/animations/line-scale.scss'
 
 .loader-hidden {
