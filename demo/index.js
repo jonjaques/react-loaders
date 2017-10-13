@@ -109,7 +109,7 @@ export class LoaderDemo extends Component {
       </Row>
       <Row>
         <Col sm={7}>
-          <pre className="hidden-xs" data-type="shell">{"npm i --save react-loaders"}</pre>
+          <pre className="hidden-xs" data-type="shell">{"npm i --save react-loaders loaders.css"}</pre>
           <pre className="hidden-xs" data-type="js">
             {"import Loader from 'react-loaders'"}
             <br style={hidden} />
