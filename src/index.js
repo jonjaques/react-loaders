@@ -6,7 +6,6 @@ export class Loader extends Component {
 
   static propTypes = {
     type: PropTypes.string,
-    size: PropTypes.string,
     active: PropTypes.bool,
     color: PropTypes.string,
     innerClassName: PropTypes.string,
@@ -14,7 +13,6 @@ export class Loader extends Component {
 
   static defaultProps = {
     type: 'ball-pulse',
-    size: 'md',
     active: true
   };
 

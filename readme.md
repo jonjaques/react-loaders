@@ -30,7 +30,6 @@ function renderLoader() {
 ```js
 static propTypes = {
   type: PropTypes.string,
-  size: PropTypes.string,
   active: PropTypes.bool,
   color: PropTypes.string,
   innerClassName: PropTypes.string, // applied to the same div as .loader-inner.${type}
@@ -39,6 +38,12 @@ static propTypes = {
 };
 ```
 
+#### Sizing
+**Note**: in ~2.x we had a size prop declared, but it never did anything so for 3.0 it has been removed. Why you ask? Well due to the way these are built by loaders.css, they are hardcoded to use specific pixel widths so sizing these natively would require rewriting that whole project.
+
+*Pro tip*: you can resize these by simply passing `style={{transform: 'scale(0.5)'}}`. 
+
+### CSS
 Import any of the animations you want to use.
 
 ```scss

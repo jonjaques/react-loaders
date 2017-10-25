@@ -157,14 +157,12 @@ var Loader = exports.Loader = function (_Component) {
 
 Loader.propTypes = {
   type: _propTypes2.default.string,
-  size: _propTypes2.default.string,
   active: _propTypes2.default.bool,
   color: _propTypes2.default.string,
   innerClassName: _propTypes2.default.string
 };
 Loader.defaultProps = {
   type: 'ball-pulse',
-  size: 'md',
   active: true
 };
 exports.default = Loader;
