@@ -5,6 +5,7 @@
   "main": "./dist/react-loaders.js",
   "typings": "./dist/react-loaders",
   "scripts": {
+    "test": "jest",
     "build": "NODE_ENV=production gulp demo",
     "prepublish": "npm run build"
   },
@@ -18,7 +19,8 @@
     "react-component"
   ],
   "peerDependencies": {
-    "react": ">=15"
+    "react": ">=15",
+    "prop-types": ">=15.6.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.0",
@@ -32,20 +34,20 @@
     "gulp-ruby-sass": "^2.1.1",
     "gulp-util": "^3.0.8",
     "gulp-webpack": "^1.5.0",
+    "jest": "^21.2.1",
     "loaders.css": "^0.1.2",
     "lodash": "^4.17.4",
     "react": "^16.0.0",
     "react-addons-test-utils": "^15.4.2",
-    "react-bootstrap": "^0.31.3",
+    "react-bootstrap": "^0.31.5",
     "react-dom": "^16.0.0",
     "reactcss": "^1.2.3",
-    "uglify-js": "^3.1.2",
-    "uglifyjs-webpack-plugin": "^0.4.6",
-    "webpack": "^3.6.0",
+    "uglify-js": "^3.1.5",
+    "uglifyjs-webpack-plugin": "^1.0.1",
+    "webpack": "^3.8.1",
     "webpack-node-externals": "^1.2.0"
   },
   "dependencies": {
-    "classnames": "^2.2.3",
-    "prop-types": "^15.6.0"
+    "classnames": "^2.2.3"
   }
 }

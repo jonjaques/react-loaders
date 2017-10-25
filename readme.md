@@ -25,6 +25,20 @@ function renderLoader() {
 
 ```
 
+### Props
+
+```js
+static propTypes = {
+  type: PropTypes.string,
+  size: PropTypes.string,
+  active: PropTypes.bool,
+  color: PropTypes.string,
+  innerClassName: PropTypes.string, // applied to the same div as .loader-inner.${type}
+   																	// useful for advanced styling
+  // className & style are implied
+};
+```
+
 Import any of the animations you want to use.
 
 ```scss

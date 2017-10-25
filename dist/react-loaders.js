@@ -128,12 +128,14 @@ var Loader = exports.Loader = function (_Component) {
         loader: true
       }, _defineProperty(_classnames, 'loader-' + this.props.size, this.props.size !== 'md'), _defineProperty(_classnames, 'loader-active', this.props.active), _defineProperty(_classnames, 'loader-hidden', !this.props.active), _classnames), this.props.className);
 
+      var innerClasses = (0, _classnames3.default)(['loader-inner', this.props.type, this.props.innerClassName]);
+
       return _react2.default.createElement(
         'div',
-        { className: classes },
+        { className: classes, style: this.props.style },
         _react2.default.createElement(
           'div',
-          { className: 'loader-inner ' + this.props.type },
+          { className: innerClasses },
           nDivs.map(this.renderDiv.bind(this))
         )
       );
@@ -157,7 +159,8 @@ Loader.propTypes = {
   type: _propTypes2.default.string,
   size: _propTypes2.default.string,
   active: _propTypes2.default.bool,
-  color: _propTypes2.default.string
+  color: _propTypes2.default.string,
+  innerClassName: _propTypes2.default.string
 };
 Loader.defaultProps = {
   type: 'ball-pulse',
