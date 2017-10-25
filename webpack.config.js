@@ -9,7 +9,7 @@ module.exports = [
     output: {
       path: path.resolve('dist'),
       filename: "react-loaders.js",
-      libraryTarget: 'commonjs'
+      libraryTarget: 'commonjs2'
     },
     externals: [externals],
     module: {
