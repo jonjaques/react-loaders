@@ -8,7 +8,8 @@ export class Loader extends Component {
     type: PropTypes.string,
     size: PropTypes.string,
     active: PropTypes.bool,
-    color: PropTypes.string
+    color: PropTypes.string,
+    innerClassName: PropTypes.string,
   };
 
   static defaultProps = {
@@ -42,8 +43,14 @@ export class Loader extends Component {
       'loader-hidden': !this.props.active
     }, this.props.className)
 
-    return <div className={classes}>
-      <div className={`loader-inner ${this.props.type}`}>
+    const innerClasses = classnames([
+      'loader-inner', 
+      this.props.type, 
+      this.props.innerClassName
+    ])
+
+    return <div className={classes} style={this.props.style}>
+      <div className={innerClasses}>
         { nDivs.map(::this.renderDiv) }
       </div>
     </div>
