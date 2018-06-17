@@ -8,12 +8,14 @@ export class Loader extends Component {
     type: PropTypes.string,
     active: PropTypes.bool,
     color: PropTypes.string,
+    outerClassName: PropTypes.string,
     innerClassName: PropTypes.string,
   };
 
   static defaultProps = {
     type: 'ball-pulse',
-    active: true
+    active: true,
+    outerClassName: 'loader'
   };
 
   static removeType(type) {
@@ -35,14 +37,14 @@ export class Loader extends Component {
   render() {
     const nDivs = range(Types[this.props.type]);
     const classes = classnames({
-      loader: true,
-      ['loader-' + this.props.size]: this.props.size !== 'md',
-      'loader-active': this.props.active,
-      'loader-hidden': !this.props.active
+      [this.props.outerClassName]: true,
+      [this.props.outerClassName + '-' + this.props.size]: this.props.size !== 'md',
+      [this.props.outerClassName + '-active']: this.props.active,
+      [this.props.outerClassName + '-hidden']: !this.props.active
     }, this.props.className)
 
     const innerClasses = classnames([
-      'loader-inner', 
+      this.props.outerClassName + '-inner', 
       this.props.type, 
       this.props.innerClassName
     ])

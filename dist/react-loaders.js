@@ -124,11 +124,9 @@ var Loader = exports.Loader = function (_Component) {
       var _classnames;
 
       var nDivs = range(Types[this.props.type]);
-      var classes = (0, _classnames3.default)((_classnames = {
-        loader: true
-      }, _defineProperty(_classnames, 'loader-' + this.props.size, this.props.size !== 'md'), _defineProperty(_classnames, 'loader-active', this.props.active), _defineProperty(_classnames, 'loader-hidden', !this.props.active), _classnames), this.props.className);
+      var classes = (0, _classnames3.default)((_classnames = {}, _defineProperty(_classnames, this.props.outerClassName, true), _defineProperty(_classnames, this.props.outerClassName + '-' + this.props.size, this.props.size !== 'md'), _defineProperty(_classnames, this.props.outerClassName + '-active', this.props.active), _defineProperty(_classnames, this.props.outerClassName + '-hidden', !this.props.active), _classnames), this.props.className);
 
-      var innerClasses = (0, _classnames3.default)(['loader-inner', this.props.type, this.props.innerClassName]);
+      var innerClasses = (0, _classnames3.default)([this.props.outerClassName + '-inner', this.props.type, this.props.innerClassName]);
 
       return _react2.default.createElement(
         'div',
@@ -159,11 +157,13 @@ Loader.propTypes = {
   type: _propTypes2.default.string,
   active: _propTypes2.default.bool,
   color: _propTypes2.default.string,
+  outerClassName: _propTypes2.default.string,
   innerClassName: _propTypes2.default.string
 };
 Loader.defaultProps = {
   type: 'ball-pulse',
-  active: true
+  active: true,
+  outerClassName: 'loader'
 };
 exports.default = Loader;
 var Types = exports.Types = {
