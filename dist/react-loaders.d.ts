@@ -1,4 +1,6 @@
 declare module "react-loaders" {
+    import * as React from "react";
+  
     export type LoaderType =
         | "ball-pulse"
         | "ball-grid-pulse"
