@@ -34,6 +34,7 @@ declare module 'react-loaders' {
   export default class Loader extends React.Component<{
     type: LoaderType,
     active: boolean,
+    color?: string,
     innerClassName?: string
   }, {}> {
   }
