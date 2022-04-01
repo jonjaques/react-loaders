@@ -2,7 +2,7 @@
 
 Lightweight wrapper around [Loaders.css](https://github.com/ConnorAtherton/loaders.css).
 
-[Demo](http://jonjaques.github.com/react-loaders)
+[Demo](http://jonjaques.github.io/react-loaders)
 
 ## Install
 
